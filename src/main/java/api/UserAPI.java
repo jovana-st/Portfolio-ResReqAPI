@@ -1,3 +1,5 @@
+package api;
+
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import models.CreateUserBody;
@@ -5,7 +7,7 @@ import models.CreateUserBody;
 import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.request;
 
-public class UserAPI extends BaseAPI{
+public class UserAPI extends BaseAPI {
 
     //Create a user - POST
     public Response createUser (Object requestBody, boolean hasAccess) {
@@ -19,10 +21,18 @@ public class UserAPI extends BaseAPI{
 
 
     //Get user details - GET
-    public Response getUser (Integer userId) {
-            return given().spec(baseSpec).pathParam("userId", userId)
-                    .when().get("/users/{userId}")
-                    .then().log().all().extract().response();
+    public Response getUser(Integer userId) {
+        return given().spec(baseSpec)
+                .pathParam("userId", userId)
+                .when().get("/users/{userId}")
+                .then().log().all().extract().response();
+    }
+
+    //Get all users - GET
+    public Response getAllUsers() {
+        return given().spec(baseSpec)
+                .when().get("/users")
+                .then().log().all().extract().response();
     }
 
     //Update an existing user - PUT

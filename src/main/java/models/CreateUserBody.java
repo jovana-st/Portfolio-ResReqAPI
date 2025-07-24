@@ -35,10 +35,10 @@ public class CreateUserBody {
     }
 
     public String getExtraField() {
-        return job;
+        return extraField;
     }
 
-    public void setExtraField(String job) {
-        this.job = job;
+    public void setExtraField(String extraField) {
+        this.extraField = extraField;
     }
 }
